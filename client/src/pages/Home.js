@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import Layout from "../components/Layout";
 
@@ -7,10 +7,10 @@ function Home(props) {
     const getData = async () => {
         try {
             const response = await axios.post("/api/user/get-user-info-by-id", {}, {
-                    headers: {
-                        Authorization: "Bearer " + localStorage.getItem("token"),
-                    }
-                })
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                }
+            })
             console.log(response.data);
         } catch (error) {
             console.log(error);
@@ -22,10 +22,10 @@ function Home(props) {
     }, []);
     return (
         <Layout>
-        <h1>Homepage</h1>
-    </Layout>
+            <h1>Homepage</h1>
+        </Layout>
     );
-    
+
 }
 
 export default Home;
