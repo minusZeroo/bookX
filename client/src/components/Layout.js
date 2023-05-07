@@ -56,7 +56,7 @@ const Layout = ({children}) => {
                 </div>
                 <div className='content'>
                     <div className="header">
-                        header
+                        <i className="ri-close-fill close-icon"></i>
                     </div>
                     <div className="body">
                         {children}
