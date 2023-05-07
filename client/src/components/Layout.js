@@ -1,8 +1,8 @@
 import React from 'react';
-
+import '../layout.css'
 const Layout = ({children}) => {
     return (
-        <div className='main p-2'>
+        <div className='main'>
             <div className='d-flex layout'>
                 <div className='sidebar'>
                     sidebar
