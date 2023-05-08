@@ -9,7 +9,6 @@
     margin-right: 20px;
     min-height: 100%;
     padding: 10px;
-    width: 300px;
 }
 
 .content {
@@ -39,6 +38,7 @@
 
 .menu {
     margin-top: 100px;
+    padding: 0 10px;
 }
 
 .menu-item {
@@ -49,6 +49,7 @@
     color: rgba(255, 255, 255, 0.727);
     text-decoration: none;
     font-size: 18px;
+    padding: 0 10px;
 }
 
 .menu-item i{
@@ -65,7 +66,15 @@
     border-radius: 5px;
 }
 
-.close-icon{
-    font-size: 20px;
+.header-action-icon{
+    font-size: 30px;
     color: black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        padding: 0 5px;
+    }
 }
