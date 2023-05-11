@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import '../layout.css'
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const Layout = ({children}) => {
 
     const [collapsed, setCollapsed] = useState(false);
     const {user} = useSelector((state) => state.user);
+    const navigate = useNavigate();
 
     const location  = useLocation();
 
@@ -31,21 +32,37 @@ const Layout = ({children}) => {
             path: '/profile',
             icon: 'ri-user-line'
         },
+    ];
+
+    const adminMenu = [
         {
-            name: 'Logout',
-            path: '/logout',
-            icon: 'ri-login-box-line'
+            name: 'Home',
+            path: '/',
+            icon: 'ri-home-line'
+        },
+        {
+            name: 'Users',
+            path: '/users',
+            icon: 'ri-user-line',
+        },
+        {
+            name: 'ToBeBooked',
+            path: 'tobebooked',
+            icon: 'ri-user-star-line',
+        },
+        {
+            name: 'Profile',
+            path: '/profile',
+            icon: 'ri-user-line'
         },
     ];
 
-    const menuToBeRendered = userMenu;
-
-
+    const menuToBeRendered = user?.isAdmin ? adminMenu : userMenu;
     return (
         <div className='main'>
             <div className='d-flex layout'>
                 <div className= 'sidebar'>
-                    <div className='sidebar-header'>
+                    <div className='logo'>
                         <h1>BX</h1>
                     </div>
                     <div className="menu">
@@ -56,6 +73,14 @@ const Layout = ({children}) => {
                                 {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                             </div>
                         })}
+                        <div className={`d-flex menu-item `} onClick={() => {
+                            localStorage.clear()
+                            navigate('/login')
+                        }}>
+                            <i className='ri-logout-circle-line'></i>
+                            {!collapsed && <Link to='/login'>Logout</Link>}
+                        </div>
+
                     </div>
                 </div>
                 <div className='content'>

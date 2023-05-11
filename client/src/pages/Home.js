@@ -9,11 +9,9 @@ function Home(props) {
             const response = await axios.post("/api/user/get-user-info-by-id", {}, {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token"),
-                }
+                },
             })
-            console.log(response.data);
         } catch (error) {
-            console.log(error);
         }
     }
 
